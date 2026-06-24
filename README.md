@@ -8,6 +8,22 @@ Sistema de Gestão de Imóveis migrado de NestJS para Spring Boot 3 + Java 21.
 - Maven 3.9+
 - Docker (PostgreSQL 15 + Redis 7)
 
+## Estrutura do projeto
+
+```
+GMOB/
+├── core/                 # plataforma transversal
+│   ├── infra/            # enums, exceções, CORS, validação
+│   └── auth/             # JWT, login, register, logout
+├── modules/              # bounded contexts de negócio
+│   ├── corretor/
+│   ├── imovel/
+│   └── cliente/
+└── app/                  # bootstrap Spring Boot + Flyway
+```
+
+Pacotes Java permanecem em `br.com.gmob.*` — apenas módulos Maven e pastas foram reorganizados.
+
 ## Subir infraestrutura
 
 ```bash
@@ -18,14 +34,14 @@ O PostgreSQL do GMOB usa a porta **5433** (evita conflito com outros Postgres lo
 
 ## Executar aplicação
 
-**Importante:** este é um projeto Maven **multi-module**. Sempre execute os comandos a partir da pasta `GMOB/` (raiz), não de dentro de `gmob-app/`.
+**Importante:** este é um projeto Maven **multi-module**. Sempre execute os comandos a partir da pasta `GMOB/` (raiz), não de dentro de `app/`.
 
 ```bash
 # 1. Instalar todos os módulos no repositório local (obrigatório na 1ª vez ou após mudanças)
 mvn clean install
 
 # 2. Subir a aplicação
-mvn -pl gmob-app spring-boot:run
+mvn -pl app spring-boot:run
 ```
 
 Variáveis de ambiente opcionais (defaults já configurados para o Docker Compose):
@@ -44,13 +60,14 @@ API disponível em `http://localhost:3000/api`
 
 ## Módulos
 
-| Módulo | Pacote | Responsabilidade |
-|--------|--------|------------------|
-| gmob-infra | br.com.gmob.infra | Exceções, enums, CORS, validação |
-| gmob-auth | br.com.gmob.auth | JWT, login, register, logout |
-| gmob-corretor | br.com.gmob.corretor | CRUD corretores |
-| gmob-imovel | br.com.gmob.imovel | CRUD imóveis + tipos + imagens |
-| gmob-cliente | br.com.gmob.cliente | CRUD clientes + transações |
+| Módulo | Camada | Pacote | Responsabilidade |
+|--------|--------|--------|------------------|
+| infra | core | br.com.gmob.infra | Exceções, enums, CORS, validação |
+| auth | core | br.com.gmob.auth | JWT, login, register, logout |
+| corretor | modules | br.com.gmob.corretor | CRUD corretores |
+| imovel | modules | br.com.gmob.imovel | CRUD imóveis + tipos + imagens |
+| cliente | modules | br.com.gmob.cliente | CRUD clientes + transações |
+| app | bootstrap | br.com.gmob | Spring Boot, Flyway, composição |
 
 ## Testes
 

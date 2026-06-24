@@ -12,19 +12,19 @@
     </parent>
 
     <groupId>br.com.gmob</groupId>
-    <artifactId>gmob-parent</artifactId>
+    <artifactId>parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>GMOB</name>
     <description>Sistema de Gestão de Imóveis - Spring Boot</description>
 
     <modules>
-        <module>gmob-infra</module>
-        <module>gmob-corretor</module>
-        <module>gmob-auth</module>
-        <module>gmob-imovel</module>
-        <module>gmob-cliente</module>
-        <module>gmob-app</module>
+        <module>core/infra</module>
+        <module>modules/corretor</module>
+        <module>core/auth</module>
+        <module>modules/imovel</module>
+        <module>modules/cliente</module>
+        <module>app</module>
     </modules>
 
     <properties>
@@ -39,27 +39,27 @@
         <dependencies>
             <dependency>
                 <groupId>br.com.gmob</groupId>
-                <artifactId>gmob-infra</artifactId>
+                <artifactId>infra</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>br.com.gmob</groupId>
-                <artifactId>gmob-corretor</artifactId>
+                <artifactId>corretor</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>br.com.gmob</groupId>
-                <artifactId>gmob-auth</artifactId>
+                <artifactId>auth</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>br.com.gmob</groupId>
-                <artifactId>gmob-imovel</artifactId>
+                <artifactId>imovel</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>br.com.gmob</groupId>
-                <artifactId>gmob-cliente</artifactId>
+                <artifactId>cliente</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

@@ -6,25 +6,30 @@
 
     <parent>
         <groupId>br.com.gmob</groupId>
-        <artifactId>gmob-parent</artifactId>
+        <artifactId>parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>gmob-corretor</artifactId>
-    <name>gmob-corretor</name>
+    <artifactId>cliente</artifactId>
+    <name>cliente</name>
 
     <dependencies>
         <dependency>
             <groupId>br.com.gmob</groupId>
-            <artifactId>gmob-infra</artifactId>
+            <artifactId>infra</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>br.com.gmob</groupId>
+            <artifactId>corretor</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>br.com.gmob</groupId>
+            <artifactId>imovel</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-crypto</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
