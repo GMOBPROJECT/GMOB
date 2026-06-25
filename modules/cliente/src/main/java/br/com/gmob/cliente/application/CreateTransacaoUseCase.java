@@ -7,8 +7,8 @@ import br.com.gmob.cliente.application.port.ClienteLookupPort;
 import br.com.gmob.cliente.domain.model.Cliente;
 import br.com.gmob.cliente.domain.model.TransacaoImovel;
 import br.com.gmob.cliente.domain.port.TransacaoRepositoryPort;
-import br.com.gmob.imovel.application.port.AgendamentoVisitaQueryPort;
 import br.com.gmob.imovel.application.port.ImovelQueryPort;
+import br.com.gmob.visita.application.port.VisitaQueryPort;
 import br.com.gmob.infra.domain.enums.StatusImovel;
 import br.com.gmob.infra.domain.enums.TipoTransacao;
 import br.com.gmob.infra.exception.BusinessException;
@@ -27,18 +27,18 @@ public class CreateTransacaoUseCase {
     private final ClienteLookupPort clienteLookupPort;
     private final ImovelQueryPort imovelQueryPort;
     private final TransacaoRepositoryPort transacaoRepository;
-    private final AgendamentoVisitaQueryPort agendamentoVisitaQueryPort;
+    private final VisitaQueryPort visitaQueryPort;
 
     public CreateTransacaoUseCase(
             ClienteLookupPort clienteLookupPort,
             ImovelQueryPort imovelQueryPort,
             TransacaoRepositoryPort transacaoRepository,
-            AgendamentoVisitaQueryPort agendamentoVisitaQueryPort
+            VisitaQueryPort visitaQueryPort
     ) {
         this.clienteLookupPort = clienteLookupPort;
         this.imovelQueryPort = imovelQueryPort;
         this.transacaoRepository = transacaoRepository;
-        this.agendamentoVisitaQueryPort = agendamentoVisitaQueryPort;
+        this.visitaQueryPort = visitaQueryPort;
     }
 
     @Transactional
@@ -72,9 +72,9 @@ public class CreateTransacaoUseCase {
                 Instant.now()
         ));
 
-        List<AgendamentoVisitaQueryPort.AgendamentoPendenteView> agendamentos =
+        List<VisitaQueryPort.VisitaPendenteView> agendamentos =
                 request.tipoTransacao() == TipoTransacao.VENDA
-                        ? agendamentoVisitaQueryPort.findAgendadosByImovelId(transacao.imovelId())
+                        ? visitaQueryPort.findAgendadosByImovelId(transacao.imovelId())
                         : Collections.emptyList();
 
         return TransacaoMapper.toCreateResult(transacao, agendamentos);

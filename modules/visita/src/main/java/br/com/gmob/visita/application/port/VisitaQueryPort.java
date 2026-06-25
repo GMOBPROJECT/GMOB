@@ -1,17 +1,18 @@
-package br.com.gmob.imovel.application.port;
+package br.com.gmob.visita.application.port;
 
 import br.com.gmob.infra.domain.enums.StatusAgendamento;
+import br.com.gmob.infra.security.AuthenticatedUser;
 
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-public interface AgendamentoVisitaQueryPort {
+public interface VisitaQueryPort {
 
-    List<AgendamentoPendenteView> findAgendadosByImovelId(Long imovelId);
+    List<VisitaPendenteView> findAgendadosByImovelId(Long imovelId);
 
-    record AgendamentoPendenteView(
+    record VisitaPendenteView(
             Long agendamentoId,
             Long imovelId,
             Long corretorId,

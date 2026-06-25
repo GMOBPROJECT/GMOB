@@ -1,7 +1,7 @@
-package br.com.gmob.imovel.infrastructure.persistence;
+package br.com.gmob.visita.infrastructure.persistence;
 
-import br.com.gmob.imovel.application.port.AgendamentoVisitaQueryPort;
 import br.com.gmob.infra.domain.enums.StatusAgendamento;
+import br.com.gmob.visita.application.port.VisitaQueryPort;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
@@ -13,24 +13,24 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Component
-public class AgendamentoVisitaQueryAdapter implements AgendamentoVisitaQueryPort {
+public class VisitaQueryAdapter implements VisitaQueryPort {
 
-    private final SpringDataAgendamentoVisitaRepository repository;
+    private final SpringDataVisitaRepository repository;
 
-    public AgendamentoVisitaQueryAdapter(SpringDataAgendamentoVisitaRepository repository) {
+    public VisitaQueryAdapter(SpringDataVisitaRepository repository) {
         this.repository = repository;
     }
 
     @Override
-    public List<AgendamentoPendenteView> findAgendadosByImovelId(Long imovelId) {
+    public List<VisitaPendenteView> findAgendadosByImovelId(Long imovelId) {
         return repository.findAgendadosWithClienteByImovelId(imovelId)
                 .stream()
                 .map(this::mapRow)
                 .toList();
     }
 
-    private AgendamentoPendenteView mapRow(Object[] row) {
-        return new AgendamentoPendenteView(
+    private VisitaPendenteView mapRow(Object[] row) {
+        return new VisitaPendenteView(
                 asLong(row[0]),
                 asLong(row[1]),
                 asLong(row[2]),

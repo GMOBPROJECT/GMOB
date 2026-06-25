@@ -18,6 +18,7 @@ GMOB/
 ├── modules/              # bounded contexts de negócio
 │   ├── corretor/
 │   ├── imovel/
+│   ├── visita/
 │   └── cliente/
 └── app/                  # bootstrap Spring Boot + Flyway
 ```
@@ -66,6 +67,7 @@ API disponível em `http://localhost:3000/api`
 | auth | core | br.com.gmob.auth | JWT, login, register, logout |
 | corretor | modules | br.com.gmob.corretor | CRUD corretores |
 | imovel | modules | br.com.gmob.imovel | CRUD imóveis + tipos + imagens |
+| visita | modules | br.com.gmob.visita | Agendamento de visitas + eventos de domínio |
 | cliente | modules | br.com.gmob.cliente | CRUD clientes + transações |
 | app | bootstrap | br.com.gmob | Spring Boot, Flyway, composição |
 

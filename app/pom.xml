@@ -33,6 +33,10 @@
         </dependency>
         <dependency>
             <groupId>br.com.gmob</groupId>
+            <artifactId>visita</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>br.com.gmob</groupId>
             <artifactId>cliente</artifactId>
         </dependency>
         <dependency>

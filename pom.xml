@@ -23,6 +23,7 @@
         <module>modules/corretor</module>
         <module>core/auth</module>
         <module>modules/imovel</module>
+        <module>modules/visita</module>
         <module>modules/cliente</module>
         <module>app</module>
     </modules>
@@ -55,6 +56,11 @@
             <dependency>
                 <groupId>br.com.gmob</groupId>
                 <artifactId>imovel</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>br.com.gmob</groupId>
+                <artifactId>visita</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

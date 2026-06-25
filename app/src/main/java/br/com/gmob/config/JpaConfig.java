@@ -8,12 +8,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = {
         "br.com.gmob.corretor.infrastructure.persistence",
         "br.com.gmob.imovel.infrastructure.persistence",
-        "br.com.gmob.cliente.infrastructure.persistence"
+        "br.com.gmob.cliente.infrastructure.persistence",
+        "br.com.gmob.visita.infrastructure.persistence"
 })
 @EntityScan(basePackages = {
         "br.com.gmob.corretor.infrastructure.persistence",
         "br.com.gmob.imovel.infrastructure.persistence",
-        "br.com.gmob.cliente.infrastructure.persistence"
+        "br.com.gmob.cliente.infrastructure.persistence",
+        "br.com.gmob.visita.infrastructure.persistence"
 })
 public class JpaConfig {
 }

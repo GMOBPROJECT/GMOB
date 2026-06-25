@@ -1,0 +1,65 @@
+### GMOB API - Visitas (Agendamento)
+
+### Variáveis
+@baseUrl = http://localhost:3000/api
+@token = {{login.response.body.access_token}}
+
+### 1. Login
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "joao@email.com",
+  "senha": "senha123"
+}
+
+### 2. Criar Visita
+# @name createVisita
+POST {{baseUrl}}/visitas
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "imovel_id": 1,
+  "cliente_id": 1,
+  "data_visita": "2026-08-15",
+  "hora_inicio": "10:00",
+  "hora_termino": "11:00",
+  "observacoes": "Visita para cliente interessado em apartamento com 2 quartos."
+}
+
+### 3. Listar Visitas (paginação padrão)
+# @name listVisitasDefault
+GET {{baseUrl}}/visitas?page=1&limit=10
+Authorization: Bearer {{token}}
+
+### 4. Listar Visitas (filtro por imóvel)
+# @name listVisitasByImovel
+GET {{baseUrl}}/visitas?imovelId=1&page=1&limit=5
+Authorization: Bearer {{token}}
+
+### 5. Listar Visitas (filtro por cliente e data)
+# @name listVisitasByClientAndDate
+GET {{baseUrl}}/visitas?clienteId=1&data=2026-08-15
+Authorization: Bearer {{token}}
+
+### 6. Buscar Visita por ID
+# @name getVisitaById
+GET {{baseUrl}}/visitas/1
+Authorization: Bearer {{token}}
+
+### 7. Atualizar Visita (cancelar)
+# @name cancelVisita
+PATCH {{baseUrl}}/visitas/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "status_agendamento": "cancelado"
+}
+
+### 8. Remover Visita
+# @name deleteVisita
+DELETE {{baseUrl}}/visitas/1
+Authorization: Bearer {{token}}

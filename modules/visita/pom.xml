@@ -11,8 +11,8 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>cliente</artifactId>
-    <name>cliente</name>
+    <artifactId>visita</artifactId>
+    <name>visita</name>
 
     <dependencies>
         <dependency>
@@ -21,19 +21,23 @@
         </dependency>
         <dependency>
             <groupId>br.com.gmob</groupId>
-            <artifactId>corretor</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>br.com.gmob</groupId>
             <artifactId>imovel</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>br.com.gmob</groupId>
-            <artifactId>visita</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

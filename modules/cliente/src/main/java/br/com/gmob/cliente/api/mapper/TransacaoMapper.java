@@ -18,7 +18,7 @@ import br.com.gmob.cliente.domain.model.TransacaoImovelDetalhe;
 import br.com.gmob.cliente.infrastructure.persistence.ClienteJpaEntity;
 import br.com.gmob.cliente.infrastructure.persistence.TransacaoImovelJpaEntity;
 import br.com.gmob.imovel.infrastructure.persistence.ImovelJpaEntity;
-import br.com.gmob.imovel.application.port.AgendamentoVisitaQueryPort;
+import br.com.gmob.visita.application.port.VisitaQueryPort;
 import br.com.gmob.infra.dto.PaginationResponse;
 
 import java.util.List;
@@ -149,7 +149,7 @@ public final class TransacaoMapper {
 
     public static CreateTransacaoResultResponse toCreateResult(
             TransacaoImovel transacao,
-            List<AgendamentoVisitaQueryPort.AgendamentoPendenteView> agendamentos
+            List<VisitaQueryPort.VisitaPendenteView> agendamentos
     ) {
         return new CreateTransacaoResultResponse(
                 toResponse(transacao),
@@ -160,7 +160,7 @@ public final class TransacaoMapper {
     }
 
     public static AgendamentoPendenteResponse toAgendamentoPendenteResponse(
-            AgendamentoVisitaQueryPort.AgendamentoPendenteView view
+            VisitaQueryPort.VisitaPendenteView view
     ) {
         ClienteAgendamentoResumoResponse clienteResumo = null;
         if (view.clienteNome() != null) {

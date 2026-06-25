@@ -1,18 +1,15 @@
-package br.com.gmob.imovel.infrastructure.persistence;
+package br.com.gmob.visita.infrastructure.persistence;
 
 import br.com.gmob.infra.domain.enums.StatusAgendamento;
+import br.com.gmob.infra.infrastructure.persistence.PostgresIntegerId;
+import br.com.gmob.infra.infrastructure.persistence.converter.StatusAgendamentoConverter;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import br.com.gmob.infra.infrastructure.persistence.PostgresIntegerId;
-import br.com.gmob.infra.infrastructure.persistence.converter.StatusAgendamentoConverter;
-import jakarta.persistence.Convert;
 import org.hibernate.annotations.ColumnTransformer;
 
 import java.time.Instant;
@@ -21,7 +18,7 @@ import java.time.LocalTime;
 
 @Entity
 @Table(name = "agendamentos_visitas")
-public class AgendamentoVisitaJpaEntity {
+public class VisitaJpaEntity {
 
     @PostgresIntegerId
     @Id
@@ -34,7 +31,7 @@ public class AgendamentoVisitaJpaEntity {
     private Long corretorId;
 
     @PostgresIntegerId
-    @Column(name = "imovel_id", nullable = false, insertable = false, updatable = false)
+    @Column(name = "imovel_id", nullable = false)
     private Long imovelId;
 
     @PostgresIntegerId
@@ -60,10 +57,6 @@ public class AgendamentoVisitaJpaEntity {
 
     @Column(name = "data_agendamento", nullable = false)
     private Instant dataAgendamento;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "imovel_id")
-    private ImovelJpaEntity imovel;
 
     public Long getAgendamentoId() {
         return agendamentoId;
@@ -143,16 +136,5 @@ public class AgendamentoVisitaJpaEntity {
 
     public void setDataAgendamento(Instant dataAgendamento) {
         this.dataAgendamento = dataAgendamento;
-    }
-
-    public ImovelJpaEntity getImovel() {
-        return imovel;
-    }
-
-    public void setImovel(ImovelJpaEntity imovel) {
-        this.imovel = imovel;
-        if (imovel != null) {
-            this.imovelId = imovel.getImovelId();
-        }
     }
 }
